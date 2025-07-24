@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Medicina UNAN-Managua</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .card li {
+      background-color: #e2e8f0;
+      color: #374151;
+      text-align: center;
+      padding: 8px;
+      margin-bottom: 6px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center; margin-bottom:20px;">Malla Curricular - Medicina UNAN-Managua</h1>
+  <div class="grid" id="malla"></div>
+
+  <script>
+    const semestres = [
+      { titulo: "I Semestre", materias: ["Anatomía Humana I", "Histología Humana I", "Embriología Humana I", "Biofísica Médica", "Biología Molecular", "Integrador I (obligatorio)"] },
+      { titulo: "II Semestre", materias: ["Anatomía Humana II", "Histología Humana II", "Embriología Humana II", "Fisiología Médica I", "Bioquímica", "Integrador II (obligatorio)"] },
+      { titulo: "III Semestre", materias: ["Anatomía Humana III", "Histología Humana III", "Embriología Humana III", "Fisiología Médica II", "Optativo I", "Integrador III (obligatorio)"] },
+      { titulo: "IV Semestre", materias: ["Farmacología Médica I", "Fisiopatología y Semiología Médica I", "Patología Médica I", "Inmunología", "Optativo II", "Integrador IV (obligatorio)"] },
+      { titulo: "V Semestre", materias: ["Farmacología Médica II", "Fisiopatología y Semiología Médica II", "Patología Médica II", "Microbiología Médica", "Higiene y Epidemiología", "Integrador V (obligatorio)"] },
+      { titulo: "VI Semestre", materias: ["Farmacología Médica III", "Fisiopatología y Semiología Médica III", "Parasitología Médica", "Psicología Médica", "Investigación en Salud I", "Integrador VI (obligatorio)"] },
+      { titulo: "VII Semestre", materias: ["Investigación en Salud II", "Cirugía General", "Oftalmología", "Otorrinolaringología", "Optativo III", "Práctica Preprofesional I"] },
+      { titulo: "VIII Semestre", materias: ["Salud Ocupacional", "Medicina Interna", "Dermatología", "Imagenología", "Psiquiatría", "Práctica Preprofesional II"] },
+      { titulo: "IX Semestre", materias: ["Epidemiología Analítica", "Ginecoobstetricia", "Farmacología Clínica", "Optativo IV", "Práctica Preprofesional III"] },
+      { titulo: "X Semestre", materias: ["Administración en Salud", "Pediatría", "Medicina Legal", "Optativo V", "Práctica Preprofesional IV", "Modalidad de Graduación"] },
+      { titulo: "XI Semestre", materias: ["Internado Rotatorio: Medicina Interna", "Internado Rotatorio: Ginecoobstetricia", "Internado Rotatorio: Pediatría"] },
+      { titulo: "XII Semestre", materias: ["Internado Rotatorio: Cirugía General", "Internado Rotatorio: Atención Primaria en Salud"] }
+    ];
+
+    const grid = document.getElementById("malla");
+
+    semestres.forEach((semestre) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const title = document.createElement("h3");
+      title.textContent = semestre.titulo;
+
+      const list = document.createElement("ul");
+      semestre.materias.forEach((materia) => {
+        const li = document.createElement("li");
+        li.textContent = materia;
+        list.appendChild(li);
+      });
+
+      card.appendChild(title);
+      card.appendChild(list);
+      grid.appendChild(card);
+    });
+  </script>
+</body>
